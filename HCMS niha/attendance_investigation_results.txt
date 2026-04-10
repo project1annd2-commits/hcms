@@ -1,0 +1,87 @@
+=== Investigating December Attendance ===
+
+
+--- Attendance for 2024-12-25 ---
+Total Records: 0
+
+--- Attendance for 2024-12-26 ---
+Total Records: 0
+
+--- Attendance for 2024-12-27 ---
+Total Records: 0
+
+--- Attendance for 2025-12-25 ---
+Total Records: 1
+Present: 1
+Absent: 0
+
+Present Teachers:
+  - Jyotsna Khatun (Teacher ID: 506be2cb-c763-4bf7-ac1f-7dd5eeb4e6c1)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+
+--- Attendance for 2025-12-26 ---
+Total Records: 4
+Present: 4
+Absent: 0
+
+Present Teachers:
+  - Mojibur (Mgmt) Rehman (Teacher ID: df4f0f64-728e-4cbe-8266-4ebaae83567b)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+  - Jyotsna Khatun (Teacher ID: 506be2cb-c763-4bf7-ac1f-7dd5eeb4e6c1)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+  - Salma Khatun (Teacher ID: 909ea48d-afef-4cb9-83c1-103e9f90ce5a)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+  - Salman (Mgmt)	 Seikh	 (Teacher ID: e8fc25a7-3011-406f-9e30-b2591708212c)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+
+--- Attendance for 2025-12-27 ---
+Total Records: 3
+Present: 3
+Absent: 0
+
+Present Teachers:
+  - Mojibur (Mgmt) Rehman (Teacher ID: df4f0f64-728e-4cbe-8266-4ebaae83567b)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+  - Jyotsna Khatun (Teacher ID: 506be2cb-c763-4bf7-ac1f-7dd5eeb4e6c1)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)
+
+  - Salma Khatun (Teacher ID: 909ea48d-afef-4cb9-83c1-103e9f90ce5a)
+    Status: present
+    Recorded By ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e
+    Recorded At: N/A
+    Training Program ID: 1ffcc0bd-b280-4e58-abc8-1d837ca3247d
+    Recorded By: Asma Ayesha (undefined)

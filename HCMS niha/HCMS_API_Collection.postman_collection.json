@@ -1,0 +1,1228 @@
+{
+	"info": {
+		"_postman_id": "hcms-api-collection",
+		"name": "HCMS API Collection",
+		"description": "Healthcare Management System API Testing Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Health & Status",
+			"item": [
+				{
+					"name": "Root Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": ["{{baseUrl}}"],
+							"path": [""]
+						}
+					}
+				},
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "health"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('userId', jsonData.user.id);",
+									"    pm.collectionVariables.set('userRole', jsonData.user.role);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\",\n    \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Teacher Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('teacherId', jsonData.teacher.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"0501234567\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/teacher-login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "teacher-login"]
+						}
+					}
+				},
+				{
+					"name": "Seed Admin User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/seed-admin",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "seed-admin"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard Stats (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/stats?role=admin",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dashboard", "stats"],
+							"query": [
+								{
+									"key": "role",
+									"value": "admin"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Dashboard Stats (Teacher)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/stats?role=teacher&assignedSchools=[\"school1\",\"school2\"]",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dashboard", "stats"],
+							"query": [
+								{
+									"key": "role",
+									"value": "teacher"
+								},
+								{
+									"key": "assignedSchools",
+									"value": "[\"school1\",\"school2\"]"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Training",
+			"item": [
+				{
+					"name": "Join Training",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"teacherId\": \"{{teacherId}}\",\n    \"assignmentId\": \"{{assignmentId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training/join",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training", "join"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Schools CRUD",
+			"item": [
+				{
+					"name": "Get All Schools",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						}
+					}
+				},
+				{
+					"name": "Get Schools Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Schools With Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools?filter={\"status\":\"active\"}&limit=10&skip=0&sort={\"name\":1}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"status\":\"active\"}"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "{\"name\":1}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get School By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create School",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('schoolId', jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test School\",\n    \"address\": \"123 Test Street\",\n    \"city\": \"Test City\",\n    \"status\": \"active\",\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						}
+					}
+				},
+				{
+					"name": "Update School",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Test School\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete School",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						}
+					}
+				},
+				{
+					"name": "Upsert School",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filter\": {\"name\": \"Test School\"},\n    \"document\": {\n        \"name\": \"Test School\",\n        \"address\": \"456 Updated Street\",\n        \"status\": \"active\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/upsert",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "upsert"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Teachers CRUD",
+			"item": [
+				{
+					"name": "Get All Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
+						}
+					}
+				},
+				{
+					"name": "Get Teachers Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Teacher By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Teacher",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('teacherId', jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Teacher\",\n    \"phone\": \"0509876543\",\n    \"email\": \"teacher@test.com\",\n    \"school_id\": \"{{schoolId}}\",\n    \"status\": \"active\",\n    \"is_active_login\": true,\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
+						}
+					}
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Teacher Name\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Mentors CRUD",
+			"item": [
+				{
+					"name": "Get All Mentors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors"]
+						}
+					}
+				},
+				{
+					"name": "Get Mentors Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Mentor By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors/{{mentorId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors", "{{mentorId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Mentor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('mentorId', jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Mentor\",\n    \"email\": \"mentor@test.com\",\n    \"phone\": \"0501112233\",\n    \"status\": \"active\",\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors"]
+						}
+					}
+				},
+				{
+					"name": "Update Mentor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Mentor Name\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors/{{mentorId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors", "{{mentorId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Mentor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mentors/{{mentorId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "mentors", "{{mentorId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Training Programs CRUD",
+			"item": [
+				{
+					"name": "Get All Training Programs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Programs Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Program By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs/{{programId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs", "{{programId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Training Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('programId', jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test Training Program\",\n    \"description\": \"A test training program\",\n    \"status\": \"active\",\n    \"start_date\": \"2025-01-01\",\n    \"end_date\": \"2025-12-31\",\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs"]
+						}
+					}
+				},
+				{
+					"name": "Update Training Program",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Training Program\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs/{{programId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs", "{{programId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Training Program",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_programs/{{programId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_programs", "{{programId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Training Assignments CRUD",
+			"item": [
+				{
+					"name": "Get All Training Assignments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Assignments Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Assignment By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments/{{assignmentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments", "{{assignmentId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Training Assignment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set('assignmentId', jsonData.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"teacher_id\": \"{{teacherId}}\",\n    \"program_id\": \"{{programId}}\",\n    \"assigned_at\": \"{{$isoTimestamp}}\",\n    \"status\": \"assigned\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments"]
+						}
+					}
+				},
+				{
+					"name": "Update Training Assignment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments/{{assignmentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments", "{{assignmentId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Training Assignment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_assignments/{{assignmentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_assignments", "{{assignmentId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Training Attendance CRUD",
+			"item": [
+				{
+					"name": "Get All Training Attendance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Attendance Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Training Attendance By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance/{{attendanceId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance", "{{attendanceId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Training Attendance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"teacher_id\": \"{{teacherId}}\",\n    \"assignment_id\": \"{{assignmentId}}\",\n    \"status\": \"in_progress\",\n    \"joined_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance"]
+						}
+					}
+				},
+				{
+					"name": "Update Training Attendance",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\",\n    \"completed_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance/{{attendanceId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance", "{{attendanceId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Training Attendance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/training_attendance/{{attendanceId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "training_attendance", "{{attendanceId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Users CRUD",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users"]
+						}
+					}
+				},
+				{
+					"name": "Get Users Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{userId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "{{userId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"full_name\": \"Test User\",\n    \"role\": \"admin\",\n    \"is_active\": true,\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users"]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"Updated User Name\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{userId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "{{userId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{userId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "{{userId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Employee Tasks CRUD",
+			"item": [
+				{
+					"name": "Get All Employee Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks"]
+						}
+					}
+				},
+				{
+					"name": "Get Employee Tasks Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get Employee Task By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks/{{taskId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks", "{{taskId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create Employee Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test Task\",\n    \"description\": \"A test task description\",\n    \"status\": \"pending\",\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks"]
+						}
+					}
+				},
+				{
+					"name": "Update Employee Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks/{{taskId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks", "{{taskId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete Employee Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employee_tasks/{{taskId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "employee_tasks", "{{taskId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "School Followups CRUD",
+			"item": [
+				{
+					"name": "Get All School Followups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups"]
+						}
+					}
+				},
+				{
+					"name": "Get School Followups Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups/count",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups", "count"]
+						}
+					}
+				},
+				{
+					"name": "Get School Followup By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups/{{followupId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups", "{{followupId}}"]
+						}
+					}
+				},
+				{
+					"name": "Create School Followup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"school_id\": \"{{schoolId}}\",\n    \"notes\": \"Test followup notes\",\n    \"status\": \"pending\",\n    \"created_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups"]
+						}
+					}
+				},
+				{
+					"name": "Update School Followup",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"completed\",\n    \"updated_at\": \"{{$isoTimestamp}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups/{{followupId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups", "{{followupId}}"]
+						}
+					}
+				},
+				{
+					"name": "Delete School Followup",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/school_followups/{{followupId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "school_followups", "{{followupId}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Bulk Operations",
+			"item": [
+				{
+					"name": "Bulk Create Schools",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Bulk School 1\",\n        \"status\": \"active\",\n        \"created_at\": \"{{$isoTimestamp}}\"\n    },\n    {\n        \"name\": \"Bulk School 2\",\n        \"status\": \"active\",\n        \"created_at\": \"{{$isoTimestamp}}\"\n    }\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/bulk",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "bulk"]
+						}
+					}
+				},
+				{
+					"name": "Bulk Create Teachers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Bulk Teacher 1\",\n        \"phone\": \"0500000001\",\n        \"status\": \"active\",\n        \"created_at\": \"{{$isoTimestamp}}\"\n    },\n    {\n        \"name\": \"Bulk Teacher 2\",\n        \"phone\": \"0500000002\",\n        \"status\": \"active\",\n        \"created_at\": \"{{$isoTimestamp}}\"\n    }\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/bulk",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "bulk"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,304 @@
+{
+  "summary": {
+    "totalEmployees": 6,
+    "totalSchools": 253,
+    "totalTeachers": 608,
+    "totalSchoolsAssigned": 205,
+    "totalTeachersCovered": 470,
+    "avgSchoolsPerEmployee": 34.2,
+    "avgTeachersPerEmployee": 78.3,
+    "unassignedSchoolCount": 48
+  },
+  "employees": [
+    {
+      "id": "59b89595-578b-4c54-8e0a-99c9ffaee42e",
+      "name": "",
+      "username": "asmaayesha164",
+      "schoolCount": 48,
+      "teacherCount": 132,
+      "avgTeachers": 2.8
+    },
+    {
+      "id": "0041eada-7462-4622-bba8-3b9780db6bad",
+      "name": "",
+      "username": "zainab740",
+      "schoolCount": 41,
+      "teacherCount": 114,
+      "avgTeachers": 2.8
+    },
+    {
+      "id": "63f96f15-dbbe-4cd3-b9f4-19ccc6160938",
+      "name": "",
+      "username": "rahila78",
+      "schoolCount": 38,
+      "teacherCount": 92,
+      "avgTeachers": 2.4
+    },
+    {
+      "id": "bd6089c7-8364-46cb-a934-c80db95fb718",
+      "name": "",
+      "username": "parveentaj683",
+      "schoolCount": 34,
+      "teacherCount": 85,
+      "avgTeachers": 2.5
+    },
+    {
+      "id": "021ab274-bf5c-47e5-ad40-8b2008619e0b",
+      "name": "",
+      "username": "safawarsi277",
+      "schoolCount": 36,
+      "teacherCount": 28,
+      "avgTeachers": 0.8
+    },
+    {
+      "id": "cd15910b-74a6-49f9-9008-eb8506b476ed",
+      "name": "",
+      "username": "ruksana903",
+      "schoolCount": 8,
+      "teacherCount": 19,
+      "avgTeachers": 2.4
+    }
+  ],
+  "unassignedSchools": [
+    {
+      "id": "00f7ba26-ed2a-46e8-ae58-4d56794c3899",
+      "name": "Ar Rashad National School",
+      "teacherCount": 7
+    },
+    {
+      "id": "0b35b27b-46a3-48da-9385-d888113f25e6",
+      "name": "Mother's Touch Convent",
+      "teacherCount": 6
+    },
+    {
+      "id": "0fdad97e-9846-403a-92d2-1098eadefe1c",
+      "name": "HR International",
+      "teacherCount": 0
+    },
+    {
+      "id": "17f2fca7-cf4c-47e4-a5e1-e6e979a5e835",
+      "name": "Suffa ",
+      "teacherCount": 0
+    },
+    {
+      "id": "19ef495b-d7c7-48a8-89a6-8344e5746781",
+      "name": "Al Huda",
+      "teacherCount": 0
+    },
+    {
+      "id": "1c862587-cb89-44a0-9f16-14bad2732a2e",
+      "name": "Shanti Sagar School",
+      "teacherCount": 6
+    },
+    {
+      "id": "2b025d1f-ac29-42b3-9823-7988a455c678",
+      "name": "MI Creative",
+      "teacherCount": 0
+    },
+    {
+      "id": "394bce53-5c47-448c-9121-14eaae96d5c0",
+      "name": "Al Huda",
+      "teacherCount": 7
+    },
+    {
+      "id": "3a067d21-6c95-4731-8018-4ae7e3d28d9c",
+      "name": "Hilal School- (Huda Mysore undertaking)",
+      "teacherCount": 0
+    },
+    {
+      "id": "3ccac478-81d4-48b0-ae68-0ee87fc6c714",
+      "name": "Al Huda- Kudachi",
+      "teacherCount": 0
+    },
+    {
+      "id": "3e13f562-ba75-40f5-917e-08c7658faa02",
+      "name": "KH ",
+      "teacherCount": 3
+    },
+    {
+      "id": "44a076a0-1c6d-4fc0-9327-5e96baa44425",
+      "name": "Al Ameen - Hoskote",
+      "teacherCount": 0
+    },
+    {
+      "id": "4f0d0ec2-8583-49e6-b628-8fefef11d9fd",
+      "name": "Heavens flower",
+      "teacherCount": 0
+    },
+    {
+      "id": "4f60fd77-c0f1-4d33-8798-569ec7717fd8",
+      "name": "Al ameen",
+      "teacherCount": 0
+    },
+    {
+      "id": "4f6230a0-1b85-4bbc-9d6a-e3f462cba845",
+      "name": "Olive Academy",
+      "teacherCount": 0
+    },
+    {
+      "id": "53a73027-27a8-4307-97fe-4f993b1b1f2e",
+      "name": "Madni school",
+      "teacherCount": 6
+    },
+    {
+      "id": "5d136503-e32b-45ec-a349-ffcd44442f76",
+      "name": "Green crescent",
+      "teacherCount": 0
+    },
+    {
+      "id": "5e32b04d-892e-41b6-ad0c-8d12647f4893",
+      "name": "Madni",
+      "teacherCount": 0
+    },
+    {
+      "id": "6921047d-e865-4f57-932e-9232ff1b2d6a",
+      "name": " Moderen English School",
+      "teacherCount": 0
+    },
+    {
+      "id": "6b6a5bdf-b203-4ba0-92a0-6d19fe436a53",
+      "name": "Madeena",
+      "teacherCount": 0
+    },
+    {
+      "id": "72bea154-a2b6-482b-9285-a4d3fec03f28",
+      "name": "Jamiat us Salihaath ",
+      "teacherCount": 0
+    },
+    {
+      "id": "7fa7b465-1a1a-4d9b-b6ca-e74d4b3ce5d1",
+      "name": "MI Creative",
+      "teacherCount": 1
+    },
+    {
+      "id": "7fbc5bde-6f77-49c5-8acf-02762faa567b",
+      "name": "Ashraf Model",
+      "teacherCount": 0
+    },
+    {
+      "id": "8093da30-b832-4ac3-935a-92055f49027e",
+      "name": "Al - Huda uni kids",
+      "teacherCount": 0
+    },
+    {
+      "id": "89443e05-2490-44e1-a17d-5caf4bb56f84",
+      "name": "Mount seena Academy",
+      "teacherCount": 0
+    },
+    {
+      "id": "8b243d94-0a73-49bb-9987-a750b45461e5",
+      "name": "Kalam Montessorie",
+      "teacherCount": 0
+    },
+    {
+      "id": "8cfdb1ce-c4d8-4328-a11d-f0c48154440b",
+      "name": "Mount Safa",
+      "teacherCount": 0
+    },
+    {
+      "id": "98f9dd74-207f-4ea5-85d2-9c200801e3f0",
+      "name": "joku",
+      "teacherCount": 0
+    },
+    {
+      "id": "a68e2f22-d876-4d90-bfbd-14004607602b",
+      "name": "Tippu Memorial",
+      "teacherCount": 3
+    },
+    {
+      "id": "aeb53f42-84e1-47a1-bfe7-2d8d0a0c9270",
+      "name": "Asra Public School",
+      "teacherCount": 6
+    },
+    {
+      "id": "b02b3efd-6964-4712-b99c-591de12f73c6",
+      "name": "Al Huda - Omar Nagar",
+      "teacherCount": 4
+    },
+    {
+      "id": "b2d707f7-a576-4b11-a129-044f0aa235c4",
+      "name": "Noble Oaks (MH)",
+      "teacherCount": 0
+    },
+    {
+      "id": "b7b6de85-57a4-4539-8323-a33c78d84509",
+      "name": "New Danish",
+      "teacherCount": 5
+    },
+    {
+      "id": "c1254625-e434-4276-a6bc-ca8978b6716a",
+      "name": "Example",
+      "teacherCount": 1
+    },
+    {
+      "id": "c2c9f94a-5119-4a7f-944c-7c10606963d2",
+      "name": "Millat Ideal Public School",
+      "teacherCount": 0
+    },
+    {
+      "id": "c4c92cd1-ed65-4f18-8fa1-4bb058cbf88c",
+      "name": "Ilma English Medium School",
+      "teacherCount": 2
+    },
+    {
+      "id": "c5ecb250-b51a-4efa-ba8f-9f94a85170d2",
+      "name": "Enlighten School",
+      "teacherCount": 0
+    },
+    {
+      "id": "c6d4347c-506b-48a0-ad75-6203595d000d",
+      "name": "Mothers' Lap (DCA)",
+      "teacherCount": 0
+    },
+    {
+      "id": "c8beb169-8917-41c9-9948-33ce9e946fea",
+      "name": "National Public School",
+      "teacherCount": 8
+    },
+    {
+      "id": "da0cd389-5273-4a46-912b-8a8f3318fd1f",
+      "name": "Madni school",
+      "teacherCount": 2
+    },
+    {
+      "id": "da4896f2-83a6-4b60-b436-9e3736c151de",
+      "name": "Mohammediya",
+      "teacherCount": 5
+    },
+    {
+      "id": "e165db77-ed9e-4e20-b989-ec5926da6b87",
+      "name": "Al Huda Uni Kids",
+      "teacherCount": 9
+    },
+    {
+      "id": "e68cda3f-7c83-4d26-8e5a-906064469ec5",
+      "name": "Al Ameen -",
+      "teacherCount": 0
+    },
+    {
+      "id": "eb1b63eb-62fc-4058-b022-32c65e8888a7",
+      "name": "Noble Academy",
+      "teacherCount": 6
+    },
+    {
+      "id": "ef569a89-e27b-41a1-88b5-dc14894f7273",
+      "name": "Madni school",
+      "teacherCount": 7
+    },
+    {
+      "id": "faed0332-c9cd-4a6d-99a1-59044579ccc1",
+      "name": "Al Huda",
+      "teacherCount": 0
+    },
+    {
+      "id": "fba55d4a-df3d-4338-91d8-2168d2b0bf8c",
+      "name": "Huda Pre School",
+      "teacherCount": 6
+    },
+    {
+      "id": "fcbf49fd-8e29-4cf9-8b00-0e0853d6c1a1",
+      "name": "Peace Creative",
+      "teacherCount": 3
+    }
+  ]
+}

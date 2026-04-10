@@ -1,0 +1,6 @@
+server
+api
+node_modules
+*.log
+.env
+.env.local

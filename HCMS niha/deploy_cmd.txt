@@ -1,0 +1,97 @@
+[96m[1m​[22m[39m
+[96m[1mNetlify Build                                                 [22m[39m
+[96m[1m────────────────────────────────────────────────────────────────[22m[39m
+[36m[1m​[22m[39m
+[36m[1m❯ Version[22m[39m
+  @netlify/build 35.5.2
+[36m[1m​[22m[39m
+[36m[1m❯ Flags[22m[39m
+  accountId: 67cc2d24871034d3202b93a5
+  deployId: 69c7a7145353dd34c0a52c09
+[36m[1m​[22m[39m
+[36m[1m❯ Current directory[22m[39m
+  C:\Users\Hauna\Pictures\hcm12.03.2025\HCM 12.03.2025\HCMS123-main\HCMS niha
+[36m[1m​[22m[39m
+[36m[1m❯ Config file[22m[39m
+  C:\Users\Hauna\Pictures\hcm12.03.2025\HCM 12.03.2025\HCMS123-main\HCMS niha\netlify.toml
+[36m[1m​[22m[39m
+[36m[1m❯ Context[22m[39m
+  production
+[36m[1m​[22m[39m
+[36m[1m❯ Installing extensions[22m[39m
+   - neon
+[36m[1m​[22m[39m
+[36m[1m❯ Loading extensions[22m[39m
+   - neon
+[96m[1m​[22m[39m
+[96m[1mbuild.command from netlify.toml                               [22m[39m
+[96m[1m────────────────────────────────────────────────────────────────[22m[39m
+​
+[36m$ npm run build:netlify[39m
+
+> vite-react-typescript-starter@0.0.0 build:netlify
+> node scripts/deploy-build.js
+
+Building frontend...
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+transforming...
+[32m✓[39m 2615 modules transformed.
+rendering chunks...
+[1m[33m[plugin:vite:reporter][39m[22m [33m[plugin vite:reporter] 
+(!) C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/services/db.ts is dynamically imported by C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ParentPortal.tsx but also statically imported by C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/App.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/AcademicsAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/AdminPersonnelManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/AttendanceAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/AuditManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/BulkUpload.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ChatWindow.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/CoraCMS.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/DailyAttendanceReport.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/Dashboard.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/DeviceManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/EmployeeChatDashboard.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/EmployeeTasks.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/EventCalendar.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ImplementationAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/LiveStationBoard.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/Login.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/LoginStatistics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ManagementManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ManagementPortal.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/MentorManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/MentorPortal.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/MomNotesView.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/PasscodeSettings.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/PermissionsManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/QueryTracker.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolAssignments.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolFollowupAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolFollowups.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolImplementationChecklist.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/SchoolOnboarding.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/StudentAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/StudentAssessmentForm.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/StudentListing.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/StudentManager.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/StudentProfileView.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TeacherManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TeacherPortal.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TeacherStudentListing.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TemplateDesigner/TemplateDesigner.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/ThemeChecklistsAnalytics.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TrainingAssignmentManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TrainingCalendar.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/TrainingProgramManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/components/UserManagement.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/auth.ts, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/deviceTracking.ts, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/services/chat.ts, dynamic import will not move module into another chunk.
+[39m
+[1m[33m[plugin:vite:reporter][39m[22m [33m[plugin vite:reporter] 
+(!) C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/deviceTracking.ts is dynamically imported by C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/App.tsx, C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/App.tsx but also statically imported by C:/Users/Hauna/Pictures/hcm12.03.2025/HCM 12.03.2025/HCMS123-main/HCMS niha/src/lib/auth.ts, dynamic import will not move module into another chunk.
+[39m
+computing gzip size...
+[2mdist/[22m[32mindex.html                    [39m[1m[2m    0.48 kB[22m[1m[22m[2m │ gzip:   0.31 kB[22m
+[2mdist/[22m[35massets/index-CGoH7wYj.css     [39m[1m[2m  106.73 kB[22m[1m[22m[2m │ gzip:  15.44 kB[22m
+[2mdist/[22m[36massets/purify.es-B6FQ9oRL.js  [39m[1m[2m   22.57 kB[22m[1m[22m[2m │ gzip:   8.74 kB[22m
+[2mdist/[22m[36massets/index.es-C4-2OCjE.js   [39m[1m[2m  150.44 kB[22m[1m[22m[2m │ gzip:  51.42 kB[22m
+[2mdist/[22m[36massets/index-BXUgqC0u.js      [39m[1m[33m2,755.96 kB[39m[22m[2m │ gzip: 677.59 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 25.00s[39m
+Building server...
+Preparing Netlify function...
+Build complete!
+​
+[90m(build.command completed in 28.4s)[39m
+[96m[1m​[22m[39m
+[96m[1mFunctions bundling                                            [22m[39m
+[96m[1m────────────────────────────────────────────────────────────────[22m[39m
+​
+Packaging Functions from [36mnetlify\functions[39m directory:
+ - api.js
+ - index.js
+​
+[91m[1m​[22m[39m
+[91m[1mDependencies installation error                               [22m[39m
+[91m[1m────────────────────────────────────────────────────────────────[22m[39m
+​
+  [31m[1mError message[22m[39m
+  A Netlify Function failed to require one of its dependencies.
+  Please make sure it is present in the site's top-level "package.json".
+​
+  In file "C:\Users\Hauna\Pictures\hcm12.03.2025\HCM 12.03.2025\HCMS123-main\HCMS niha\netlify\functions\api.js"
+  Cannot find module '../scripts/backup-firestore' from 'C:\Users\Hauna\Pictures\hcm12.03.2025\HCM 12.03.2025\HCMS123-main\HCMS niha\netlify\functions'
+​
+  [31m[1mResolved config[22m[39m
+  build:
+    command: npm run build:netlify
+    commandOrigin: config
+    publish: C:\Users\Hauna\Pictures\hcm12.03.2025\HCM 12.03.2025\HCMS123-main\HCMS
+      niha\dist
+    publishOrigin: config
+  functionsDirectory: C:\Users\Hauna\Pictures\hcm12.03.2025\HCM
+    12.03.2025\HCMS123-main\HCMS niha\netlify\functions
+  redirects:
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+ »   Error: Error while running build

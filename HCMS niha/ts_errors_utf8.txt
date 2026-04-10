@@ -1,0 +1,51 @@
+﻿
+> vite-react-typescript-starter@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.app.json
+
+src/components/AcademicsAnalytics.tsx(6,5): error TS6133: 'LineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(7,5): error TS6133: 'Download' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(11,5): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(23,5): error TS6133: 'Legend' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(25,18): error TS6133: 'RechartsLineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(26,5): error TS6133: 'Line' is declared but its value is never read.
+src/components/ActivityLogs.tsx(3,26): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AdminSuggestions.tsx(3,40): error TS6133: 'Clock' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,28): error TS6133: 'UserCheck' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,39): error TS6133: 'UserX' is declared but its value is never read.
+src/components/AuditManagement.tsx(3,1): error TS6133: 'Collections' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,26): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,36): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AuditManagement.tsx(11,41): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/BulkUpload.tsx(4,36): error TS6133: 'Teacher' is declared but its value is never read.
+src/components/BulkUpload.tsx(21,51): error TS6133: 'currentPermissions' is declared but its value is never read.
+src/components/BulkUpload.tsx(92,13): error TS6133: 'headers' is declared but its value is never read.
+src/components/CoraCMS.tsx(29,40): error TS2344: Type 'ContentItem' does not satisfy the constraint 'Document'.
+  Index signature for type 'string' is missing in type 'ContentItem'.
+src/components/CoraCMS.tsx(58,126): error TS2322: Type '"published" | "draft"' is not assignable to type '"draft"'.
+  Type '"published"' is not assignable to type '"draft"'.
+src/components/PermissionsManagement.tsx(5,16): error TS6133: 'Save' is declared but its value is never read.
+src/components/SchoolManagement.tsx(220,36): error TS2551: Property 'affiliation_year' does not exist on type '{ name: string; code: string; address: string; phone: string; email: string; h1_count: number; h2_count: number; h3_count: number; principal_name: string; state: string; affiliation_date: string; ... 13 more ...; updated_at: string; }'. Did you mean 'affiliation_date'?
+src/components/SchoolManagement.tsx(318,7): error TS2353: Object literal may only specify known properties, and 'affiliation_year' does not exist in type 'SetStateAction<{ name: string; code: string; address: string; phone: string; email: string; h1_count: number; h2_count: number; h3_count: number; principal_name: string; state: string; affiliation_date: string; ... 13 more ...; updated_at: string; }>'.
+src/components/SchoolManagement.tsx(352,7): error TS2353: Object literal may only specify known properties, and 'affiliation_year' does not exist in type 'SetStateAction<{ name: string; code: string; address: string; phone: string; email: string; h1_count: number; h2_count: number; h3_count: number; principal_name: string; state: string; affiliation_date: string; ... 13 more ...; updated_at: string; }>'.
+src/components/SchoolManagement.tsx(1253,41): error TS2551: Property 'affiliation_year' does not exist on type '{ name: string; code: string; address: string; phone: string; email: string; h1_count: number; h2_count: number; h3_count: number; principal_name: string; state: string; affiliation_date: string; ... 13 more ...; updated_at: string; }'. Did you mean 'affiliation_date'?
+src/components/SchoolManagement.tsx(1254,69): error TS2353: Object literal may only specify known properties, and 'affiliation_year' does not exist in type 'SetStateAction<{ name: string; code: string; address: string; phone: string; email: string; h1_count: number; h2_count: number; h3_count: number; principal_name: string; state: string; affiliation_date: string; ... 13 more ...; updated_at: string; }>'.
+src/components/StudentAnalytics.tsx(5,21): error TS6133: 'Users' is declared but its value is never read.
+src/components/StudentListing.tsx(11,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/StudentReportCard.tsx(12,74): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/SystemUpgrades.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
+src/components/SystemUpgrades.tsx(18,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(2,35): error TS6133: 'useEffect' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,31): error TS6133: 'ImageIcon' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,50): error TS6133: 'Move' is declared but its value is never read.
+src/components/TrainingAssignmentManagement.tsx(7,103): error TS6133: 'EyeOff' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(2,59): error TS6133: 'AssignmentWithDetails' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,38): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,48): error TS6133: 'Clock' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,72): error TS6133: 'LinkIcon' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,82): error TS6133: 'BarChart2' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(7,1): error TS6133: 'Notification' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(42,24): error TS6133: 'setFilterStatus' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(68,21): error TS6133: 'setTemplates' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,10): error TS6133: 'designerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,24): error TS6133: 'setDesignerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(72,10): error TS6133: 'notification' is declared but its value is never read.
