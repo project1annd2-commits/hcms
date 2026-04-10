@@ -22,6 +22,14 @@ dist-ssr
 *.sw?
 .env
 
+# Secrets - DO NOT COMMIT
+*firebase-adminsdk*.json
+service-account.json
+
+# Database backups
+*.json.bak
+*.json.backup
+
 # Local Netlify folder
 .netlify
 
