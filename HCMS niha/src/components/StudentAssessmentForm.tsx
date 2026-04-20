@@ -1110,10 +1110,17 @@ export default function StudentAssessmentForm({ user, userType, schoolId, onClos
     }, [user.id]);
 
     useEffect(() => {
-        if (activeGradeTab && selectedThemeId) {
+        if (initialThemeId) {
+            setSelectedThemeId(initialThemeId);
+        }
+    }, [initialThemeId, setSelectedThemeId]);
+
+    useEffect(() => {
+        if (activeGradeTab && selectedThemeId && students.length > 0) {
+            // Reload assessments when grade, theme, or students change
             loadAllAssessments();
         }
-    }, [activeGradeTab, selectedThemeId, students]);
+    }, [activeGradeTab, selectedThemeId, students.length]);
 
     const loadStudents = async () => {
         try {
@@ -1142,15 +1149,23 @@ export default function StudentAssessmentForm({ user, userType, schoolId, onClos
                 .filter(s => s.grade === activeGradeTab && (showDropped || s.status !== 'dropped'))
                 .filter(s => !filterSection || (s.section || '').toUpperCase() === filterSection.toUpperCase())
                 .map(s => s.id);
+            
+            console.log('[loadAllAssessments] grade:', activeGradeTab, 'theme:', selectedThemeId, 'totalStudents:', students.length, 'filteredCount:', filteredStudentIds.length);
+            
             if (filteredStudentIds.length === 0) {
                 setAllAssessments({});
                 return;
             }
 
-            const results = await db.find<StudentAssessment>(Collections.STUDENT_ASSESSMENTS, {
+            const filter = {
                 student_id: { $in: filteredStudentIds },
                 theme_number: selectedThemeId
-            });
+            };
+            console.log('[loadAllAssessments] filter:', JSON.stringify(filter));
+
+            const results = await db.find<StudentAssessment>(Collections.STUDENT_ASSESSMENTS, filter);
+
+            console.log('[loadAllAssessments] results count:', results.length);
 
             const assessmentsMap: Record<string, Record<string, 'can' | 'trying' | 'help'>> = {};
             const idsMap: Record<string, string> = {};
@@ -1161,6 +1176,8 @@ export default function StudentAssessmentForm({ user, userType, schoolId, onClos
                     idsMap[record.student_id] = record.id!;
                 }
             });
+
+            console.log('[loadAllAssessments] assessmentsMap keys:', Object.keys(assessmentsMap).length);
 
             setAllAssessments(assessmentsMap);
             setExistingAssessmentIds(idsMap);
@@ -1200,17 +1217,28 @@ export default function StudentAssessmentForm({ user, userType, schoolId, onClos
                 (!filterSection || (s.section || '').toUpperCase() === filterSection.toUpperCase())
             );
             const selectedTheme = THEMES.find(t => t.id === selectedThemeId);
+            const newAssessmentIds = { ...existingAssessmentIds };
+
+            // Keep track of successful saves
+            let saveSuccess = true;
 
             for (const student of filteredStudents) {
                 const skills = allAssessments[student.id!] || {};
                 const existingId = existingAssessmentIds[student.id!];
 
                 if (existingId) {
-                    await db.updateById(Collections.STUDENT_ASSESSMENTS, existingId, {
+                    // Update existing assessment
+                    const updateResult = await db.updateById(Collections.STUDENT_ASSESSMENTS, existingId, {
                         skills: skills,
                         updated_at: new Date().toISOString()
                     });
+                    
+                    if (!updateResult) {
+                        console.warn(`Failed to update assessment for student ${student.id}`);
+                        saveSuccess = false;
+                    }
                 } else if (Object.keys(skills).length > 0) {
+                    // Create new assessment
                     const assessmentData: Omit<StudentAssessment, 'id'> = {
                         student_id: student.id!,
                         [userType === 'teacher' ? 'teacher_id' : 'mentor_id']: user.id!,
@@ -1221,13 +1249,27 @@ export default function StudentAssessmentForm({ user, userType, schoolId, onClos
                         created_at: new Date().toISOString(),
                         updated_at: new Date().toISOString()
                     };
-                    await db.insertOne<StudentAssessment>(Collections.STUDENT_ASSESSMENTS, assessmentData);
+                    const result = await db.insertOne<StudentAssessment>(Collections.STUDENT_ASSESSMENTS, assessmentData);
+                    if (result && result.id) {
+                        newAssessmentIds[student.id!] = result.id;
+                    } else {
+                        console.warn(`Failed to create assessment for student ${student.id}`);
+                        saveSuccess = false;
+                    }
                 }
             }
 
-            setSaveStatus({ type: 'success', message: 'Assessments saved successfully!' });
-            setLastSaved(new Date().toLocaleTimeString());
-            await loadAllAssessments();
+            setExistingAssessmentIds(newAssessmentIds);
+            
+            if (saveSuccess) {
+                setSaveStatus({ type: 'success', message: 'Assessments saved successfully!' });
+                setLastSaved(new Date().toLocaleTimeString());
+                
+                // Instead of reloading from database, keep the local state intact
+                // The local state already has the correct data
+            } else {
+                setSaveStatus({ type: 'error', message: 'Some assessments failed to save. Please try again.' });
+            }
         } catch (error) {
             console.error('Error saving assessments:', error);
             setSaveStatus({ type: 'error', message: 'Failed to save assessment' });

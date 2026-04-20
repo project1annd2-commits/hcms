@@ -465,7 +465,7 @@ export default function Dashboard({ currentUser, currentPermissions }: Props) {
           <div className="flex flex-col md:flex-row items-end md:items-center gap-4">
             {currentUser.role === 'admin' && (
               <button 
-                onClick={() => window.open(import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/backup` : 'http://localhost:5000/api/backup', '_blank')}
+                onClick={() => window.open(import.meta.env.PROD ? '/api/backup' : (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/backup` : 'http://localhost:5000/api/backup'), '_blank')}
                 className="bg-white/20 hover:bg-white/30 transition-colors backdrop-blur-sm rounded-lg px-4 py-3 flex items-center gap-3"
                 title="Ensure your local or remote backend server is running to download the backup"
               >

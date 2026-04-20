@@ -19,13 +19,20 @@ function isValidObjectId(id: string): boolean {
  * Provides CRUD operations for all collections
  */
 export class DatabaseService {
-    private convertObjectIds(obj: any): any {
+    private convertObjectIds(obj: any, skipConversion: boolean = false): any {
         if (!obj || typeof obj !== 'object') return obj;
         
         const newObj = Array.isArray(obj) ? [] : {};
         for (const key in obj) {
             const val = obj[key];
-            if (typeof val === 'string' && isValidObjectId(val)) {
+            if (key === '$in' && Array.isArray(val)) {
+                // Don't convert $in array elements - keep them as strings
+                // This is important because our data stores IDs as strings, not ObjectIds
+                (newObj as any)[key] = val;
+            } else if (key === '$or' && Array.isArray(val)) {
+                // Handle $or operator recursively
+                (newObj as any)[key] = val.map((item: any) => this.convertObjectIds(item, true));
+            } else if (typeof val === 'string' && isValidObjectId(val) && !skipConversion) {
                 (newObj as any)[key] = new ObjectId(val);
             } else if (typeof val === 'object') {
                 (newObj as any)[key] = this.convertObjectIds(val);

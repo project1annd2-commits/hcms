@@ -1765,7 +1765,7 @@ export default function TeacherPortal({ teacher, onLogout }: Props) {
                 </div>
                 <div className="relative z-10">
                   <h3 className="text-3xl font-black text-white mb-3">Student Assessment Center</h3>
-                  <p className="text-emerald-50 font-medium max-w-lg mb-8 text-lg opacity-90">Track student progress in phonics, vocabulary, and holistic development for Theme 8: Nature.</p>
+                  <p className="text-emerald-50 font-medium max-w-lg mb-8 text-lg opacity-90">Track student progress in phonics, vocabulary, and holistic development for {THEMES.find(t => t.id === selectedThemeForBreakdown)?.name || `Theme ${selectedThemeForBreakdown}`}.</p>
                   <div className="flex flex-wrap gap-4">
                     <button
                       onClick={() => setShowAssessmentForm(true)}
@@ -1975,6 +1975,7 @@ export default function TeacherPortal({ teacher, onLogout }: Props) {
             user={teacher}
             userType="teacher"
             schoolId={teacher.school_id}
+            initialThemeId={selectedThemeForBreakdown}
             onClose={() => setShowAssessmentForm(false)}
           />
         )}
