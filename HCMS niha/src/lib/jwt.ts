@@ -1,4 +1,4 @@
-const JWT_SECRET_KEY = 'hcms_jwt_secret_key_2024';
+const JWT_SECRET_KEY = import.meta.env.VITE_JWT_SECRET || 'hcms_jwt_secret_key_2024';
 const TOKEN_EXPIRY_HOURS = 10;
 
 function base64UrlEncode(buffer: ArrayBuffer): string {
@@ -72,8 +72,8 @@ export const generateToken = async (user: { id?: string; _id?: string; username:
   };
 
   const header = { alg: 'HS256', typ: 'JWT' };
-  const headerEncoded = base64UrlEncode(new TextEncoder().encode(JSON.stringify(header)));
-  const payloadEncoded = base64UrlEncode(new TextEncoder().encode(JSON.stringify(payload)));
+  const headerEncoded = base64UrlEncode(new TextEncoder().encode(JSON.stringify(header)).buffer);
+  const payloadEncoded = base64UrlEncode(new TextEncoder().encode(JSON.stringify(payload)).buffer);
   const signature = await signHMAC(`${headerEncoded}.${payloadEncoded}`, JWT_SECRET_KEY);
 
   return `${headerEncoded}.${payloadEncoded}.${signature}`;

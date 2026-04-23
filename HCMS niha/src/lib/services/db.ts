@@ -11,15 +11,23 @@ class DatabaseService {
         options: RequestInit = {}
     ): Promise<T> {
         const url = `${API_URL}${endpoint}`;
+        const token = localStorage.getItem('hcms_jwt_token');
+        
         const response = await fetch(url, {
             ...options,
             headers: {
                 'Content-Type': 'application/json',
+                ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
                 ...options.headers,
             },
         });
 
         if (!response.ok) {
+            if (response.status === 401 || response.status === 403) {
+                console.error('Authentication failed. Clearing token.');
+                localStorage.removeItem('hcms_jwt_token');
+                // Optional: window.location.href = '/login';
+            }
             throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
 

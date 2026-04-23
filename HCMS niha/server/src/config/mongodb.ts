@@ -1,9 +1,10 @@
 import { MongoClient, Db, Collection } from 'mongodb';
 
-const uri = process.env.MONGODB_URI || 'mongodb+srv://project1annd2_db_user:b6A208ew63yhCvIQ@cluster0.idb1qg5.mongodb.net/?appName=Cluster0';
+const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB_NAME || 'hcms_db';
 
 if (!uri) {
+    console.error('❌ MONGODB_URI environment variable is not set');
     throw new Error('MONGODB_URI environment variable is not set');
 }
 
@@ -14,7 +15,7 @@ class MongoDB {
     private connecting: Promise<void> | null = null;
 
     private constructor() {
-        this.client = new MongoClient(uri, {
+        this.client = new MongoClient(uri!, {
             // Increase timeouts for serverless cold starts
             serverSelectionTimeoutMS: 15000,
             socketTimeoutMS: 15000,

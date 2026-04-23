@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { User, Permission, Teacher, Mentor, Management, ChatSession, CalendarEvent, SchoolAssignment, School, SchoolFollowup } from './lib/models';
-import { getCurrentUser, getCurrentTeacher, getCurrentMentor, getCurrentManagement, logout, checkSessionTimeout, updateLastActivity, signInToFirebaseAuth } from './lib/auth';
+import { getCurrentUser, getCurrentTeacher, getCurrentMentor, getCurrentManagement, logout, checkSessionTimeout, updateLastActivity, signInToFirebaseAuth, isAuthenticated } from './lib/auth';
 import { db } from './lib/services/db';
 import { Collections } from './lib/constants';
 import { getPreferredVoice } from './components/VoiceSummary';
@@ -113,38 +113,51 @@ export default function App() {
   });
 
   useEffect(() => {
-    const storedUser = getCurrentUser();
-    if (storedUser) {
-      setCurrentUser(storedUser.user);
-      setCurrentPermissions(storedUser.permissions);
-      // Re-authenticate with Firebase on page reload
-      signInToFirebaseAuth(storedUser.user.id!, storedUser.user.role || 'admin');
-    }
+    const initializeAuth = async () => {
+      const isAuth = await isAuthenticated();
+      
+      if (!isAuth) {
+        const hasAnyStoredAuth = getCurrentUser() || getCurrentTeacher() || getCurrentMentor() || getCurrentManagement();
+        if (hasAnyStoredAuth) {
+          console.warn('Session invalid or expired. Logging out.');
+          handleLogout();
+        }
+        setIsInitializing(false);
+        return;
+      }
 
-    const storedTeacher = getCurrentTeacher();
-    if (storedTeacher) {
-      setCurrentTeacher(storedTeacher);
-      signInToFirebaseAuth(storedTeacher.id!, 'teacher');
-    }
+      const storedUser = getCurrentUser();
+      if (storedUser) {
+        setCurrentUser(storedUser.user);
+        setCurrentPermissions(storedUser.permissions);
+        signInToFirebaseAuth(storedUser.user.id!, storedUser.user.role || 'admin');
+      }
 
-    const storedMentor = getCurrentMentor();
-    if (storedMentor) {
-      setCurrentMentor(storedMentor);
-      signInToFirebaseAuth(storedMentor.id!, 'mentor');
-    }
+      const storedTeacher = getCurrentTeacher();
+      if (storedTeacher) {
+        setCurrentTeacher(storedTeacher);
+        signInToFirebaseAuth(storedTeacher.id!, 'teacher');
+      }
 
-    const storedManagement = getCurrentManagement();
-    if (storedManagement) {
-      setCurrentManagement(storedManagement);
-      signInToFirebaseAuth(storedManagement.id!, 'management');
-    }
+      const storedMentor = getCurrentMentor();
+      if (storedMentor) {
+        setCurrentMentor(storedMentor);
+        signInToFirebaseAuth(storedMentor.id!, 'mentor');
+      }
 
-    // Set initialization to false after a slight delay for better UX
-    const timer = setTimeout(() => {
-      setIsInitializing(false);
-    }, 2000);
+      const storedManagement = getCurrentManagement();
+      if (storedManagement) {
+        setCurrentManagement(storedManagement);
+        signInToFirebaseAuth(storedManagement.id!, 'management');
+      }
 
-    return () => clearTimeout(timer);
+      // Set initialization to false after a slight delay
+      setTimeout(() => {
+        setIsInitializing(false);
+      }, 2000);
+    };
+
+    initializeAuth();
   }, []);
 
 

@@ -6,7 +6,10 @@ import { mongodb } from './config/mongodb';
 import { db } from './services/db';
 import { Collections } from './config/mongodb';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import { firebaseAdmin } from './services/firebase-admin';
+import { authenticateToken, authorizeRoles } from './middleware/auth';
+import { JWT_SECRET } from './config/auth';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,57 +29,54 @@ app.get('/', (req, res) => {
     res.json({ status: 'ok', message: 'HCMS API Server is running' });
 });
 
-// Simple health check endpoint
-app.get('/api/health', (req, res) => {
+// Health check endpoint
+app.get('/api/health', asyncHandler(async (req: Request, res: Response) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json({
         status: 'ok',
         timestamp: new Date().toISOString(),
         env: {
             hasMongoUri: !!process.env.MONGODB_URI,
-            hasMongoDbName: !!process.env.MONGODB_DB_NAME
+            hasMongoDbName: !!process.env.MONGODB_DB_NAME,
+            isProduction: process.env.NODE_ENV === 'production',
+            jwtSecretSource: process.env.JWT_SECRET ? 'env' : 'fallback'
         }
     });
-});
+}));
 
-// Login for admin or employee (role = 'admin' | 'employee')
+// Admin/Employee login
 app.post('/api/auth/login', asyncHandler(async (req: Request, res: Response) => {
     const { username, password } = req.body;
+
+    const user = await db.findOne(Collections.USERS, { username });
+    if (!user) {
+        return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    if (!user.is_active) {
+        return res.status(403).json({ error: 'Account is inactive' });
+    }
+
+    // Only support hashed passwords
+    const isCorrect = user.password_hash && await bcrypt.compare(password, user.password_hash);
     
-    console.log(`[auth/login] Attempting login for username: ${username}`);
-
-    const firestore = firebaseAdmin.firestore();
-    const usersSnapshot = await firestore.collection('users').where('username', '==', username).limit(1).get();
-
-    if (usersSnapshot.empty) {
-        return res.status(401).json({ error: 'Invalid username or password' });
-    }
-
-    const userDoc = usersSnapshot.docs[0];
-    const userData = { id: userDoc.id, ...userDoc.data() } as any;
-
-    if (!userData.is_active) {
-        return res.status(401).json({ error: 'Account is inactive' });
-    }
-
-    // Verify password (supports hash or plaintext passcode)
-    const storedPasscode = userData.plain_passcode || userData.passcode;
-    const isCorrect = (userData.password_hash && await bcrypt.compare(password, userData.password_hash)) ||
-                      (storedPasscode && storedPasscode === password);
-
     if (!isCorrect) {
+        // Log attempt?
         return res.status(401).json({ error: 'Invalid username or password' });
     }
 
-    // Get permissions
-    const permsSnapshot = await firestore.collection('permissions').where('user_id', '==', userData.id).limit(1).get();
-    let permissions = permsSnapshot.empty ? null : { id: permsSnapshot.docs[0].id, ...permsSnapshot.docs[0].data() };
+    const perms = await db.findOne(Collections.PERMISSIONS, { user_id: user.id });
+    
+    const token = jwt.sign(
+        { userId: user.id, username: user.username, role: user.role, permissions: perms },
+        JWT_SECRET,
+        { expiresIn: '10h' }
+    );
 
-    // Generate Firebase Custom Token
-    const customToken = await firebaseAdmin.auth().createCustomToken(userData.id, {
-        role: userData.role || 'admin',
-    });
+    // Strip sensitive fields
+    const { password_hash, plain_passcode, passcode, ...safeUser } = user as any;
 
-    res.json({ user: userData, permissions, customToken });
+    res.json({ user: safeUser, permissions: perms, token });
 }));
 
 // Participant login verification (Teacher, Mentor, Management) - Step 1: Verify Phone
@@ -111,10 +111,15 @@ app.post('/api/auth/verify-phone', asyncHandler(async (req: Request, res: Respon
         return res.status(404).json({ error: 'Phone number not found' });
     }
 
-    const userData = { id: userDoc.id, ...userDoc.data() } as any;
-    const hasPassword = !!(userData.plain_passcode || userData.password_hash || userData.passcode);
+    const userData = userDoc.data() as any;
+    const hasPassword = !!(userData.password_hash);
 
-    res.json({ type, data: userData, hasPassword });
+    res.json({ 
+        type, 
+        userId: userDoc.id, 
+        hasPassword,
+        name: userData.full_name || userData.name
+    });
 }));
 
 // Participant login verification - Step 2: Verify Password & Get Token
@@ -138,16 +143,45 @@ app.post('/api/auth/participant-login', asyncHandler(async (req: Request, res: R
     }
 
     const userData = doc.data() as any;
-    const storedPasscode = userData.plain_passcode || userData.passcode;
-    const isCorrect = (userData.password_hash && await bcrypt.compare(password, userData.password_hash)) ||
-                      (storedPasscode && storedPasscode === password);
+    const isCorrect = userData.password_hash && await bcrypt.compare(password, userData.password_hash);
 
     if (!isCorrect) {
         return res.status(401).json({ error: 'Incorrect password' });
     }
 
+    const token = jwt.sign(
+        { userId, username: userData.username || userData.phone, role: type },
+        JWT_SECRET,
+        { expiresIn: '10h' }
+    );
+
     const customToken = await firebaseAdmin.auth().createCustomToken(userId, { role: type });
-    res.json({ success: true, customToken });
+    res.json({ success: true, token, customToken });
+}));
+
+// Management login (verify phone only)
+app.post('/api/auth/management-login', asyncHandler(async (req: Request, res: Response) => {
+    const { phone } = req.body;
+    if (!phone) {
+        return res.status(400).json({ error: 'Phone number is required' });
+    }
+
+    const management = await db.findOne(Collections.MANAGEMENT, { phone });
+    if (!management) {
+        return res.status(404).json({ error: 'Management account not found' });
+    }
+
+    if (management.status !== 'active') {
+        return res.status(403).json({ error: 'Account is inactive' });
+    }
+
+    const token = jwt.sign(
+        { userId: management.id, username: management.phone, role: 'management' },
+        JWT_SECRET,
+        { expiresIn: '10h' }
+    );
+
+    res.json({ user: management, token });
 }));
 
 // Firebase custom token endpoint - for frontend to silently sign into Firebase Auth
@@ -187,8 +221,11 @@ app.post('/api/auth/firebase-token', asyncHandler(async (req: Request, res: Resp
     }
 }));
 
-// Seed admin user endpoint
+// Seed admin user endpoint - protected and disabled in production
 app.get('/api/seed-admin', asyncHandler(async (req: Request, res: Response) => {
+    if (process.env.NODE_ENV === 'production') {
+        return res.status(403).json({ error: 'Seed-admin is disabled in production' });
+    }
     const username = 'admin';
     const password = 'admin123';
     const passwordHash = await bcrypt.hash(password, 10);
@@ -247,8 +284,8 @@ app.get('/api/seed-admin', asyncHandler(async (req: Request, res: Response) => {
     });
 }));
 
-// Backup endpoint
-app.get('/api/backup', asyncHandler(async (req: Request, res: Response) => {
+// Backup endpoint - protected
+app.get('/api/backup', authenticateToken, authorizeRoles('admin'), asyncHandler(async (req: Request, res: Response) => {
     try {
         const { generateBackup } = await import('./services/backup');
         const backupData = await generateBackup();
@@ -433,11 +470,12 @@ app.post(
     })
 );
 
-/* ==================== GENERIC CRUD ==================== */
+/* ==================== GENERIC CRUD (PROTECTED) ==================== */
 
 // Count documents
 app.get(
     '/api/:collection/count',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
         const { filter } = req.query;
@@ -457,6 +495,7 @@ app.get(
 // Get all documents
 app.get(
     '/api/:collection',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
         const { filter, sort, limit, skip } = req.query;
@@ -478,6 +517,7 @@ app.get(
 // Get single document by id
 app.get(
     '/api/:collection/:id',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
         const result = await db.findById(collection, id);
@@ -489,6 +529,7 @@ app.get(
 // Create document
 app.post(
     '/api/:collection',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
         const document = req.body;
@@ -500,6 +541,7 @@ app.post(
 // Bulk create
 app.post(
     '/api/:collection/bulk',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
         const documents = req.body;
@@ -511,6 +553,7 @@ app.post(
 // Update by id
 app.put(
     '/api/:collection/:id',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
         const updates = req.body;
@@ -523,6 +566,8 @@ app.put(
 // Delete by id
 app.delete(
     '/api/:collection/:id',
+    authenticateToken,
+    authorizeRoles('admin'),
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
         const success = await db.deleteById(collection, id);
@@ -534,6 +579,7 @@ app.delete(
 // Upsert
 app.post(
     '/api/:collection/upsert',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
         const { filter, document } = req.body;
@@ -546,6 +592,7 @@ app.post(
 
 app.get(
     '/api/dashboard/stats',
+    authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { role, assignedSchools } = req.query;
 

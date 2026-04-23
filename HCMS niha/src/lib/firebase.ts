@@ -6,25 +6,18 @@ import { getStorage } from 'firebase/storage';
 
 // Option 1: Use the new test project (requires proper Firebase setup)
 const firebaseConfig = {
-    apiKey: "AIzaSyC7NL1fvGeSzuPYN4b7QyZC4eaHPBPNsyc",
-    authDomain: "hcms-test-c1e7f.firebaseapp.com",
-    projectId: "hcms-test-c1e7f",
-    storageBucket: "hcms-test-c1e7f.firebasestorage.app",
-    messagingSenderId: "36266448653",
-    appId: "1:36266448653:web:598731b0eec5a8805d4244",
-    measurementId: "G-KWMZE5T428"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyC7NL1fvGeSzuPYN4b7QyZC4eaHPBPNsyc",
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "hcms-test-c1e7f.firebaseapp.com",
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "hcms-test-c1e7f",
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "hcms-test-c1e7f.firebasestorage.app",
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "36266448653",
+    appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:36266448653:web:598731b0eec5a8805d4244",
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-KWMZE5T428"
 };
 
-// Option 2: Use the original working project (uncomment to use)
-// const firebaseConfig = {
-//     apiKey: "AIzaSyC5_mkf3qPYIy9vOmHm1bivOD3P3ycWmRM",
-//     authDomain: "hcms-680e6.firebaseapp.com",
-//     projectId: "hcms-680e6",
-//     storageBucket: "hcms-680e6.firebasestorage.app",
-//     messagingSenderId: "1033007205802",
-//     appId: "1:1033007205802:web:7ac660d2b8ad3dd363afd3",
-//     measurementId: "G-XMPRDVPW4V"
-// };
+if (!import.meta.env.VITE_FIREBASE_API_KEY) {
+    console.warn('⚠️ Firebase configuration is using hard-coded values. Please set VITE_FIREBASE_* environment variables.');
+}
 
 const app = initializeApp(firebaseConfig);
 export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
