@@ -287,7 +287,7 @@ app.get('/api/seed-admin', asyncHandler(async (req: Request, res: Response) => {
 // Backup endpoint - protected
 app.get('/api/backup', authenticateToken, authorizeRoles('admin'), asyncHandler(async (req: Request, res: Response) => {
     try {
-        const { generateBackup } = await import('./services/backup');
+        const { generateBackup } = await import('./services/backup.js');
         const backupData = await generateBackup();
         
         // Form a consistent filename
@@ -498,6 +498,9 @@ app.get(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const { filter, sort, limit, skip } = req.query;
 
         const filterObj = filter ? JSON.parse(filter as string) : {};
@@ -520,6 +523,9 @@ app.get(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const result = await db.findById(collection, id);
         if (!result) return res.status(404).json({ error: 'Document not found' });
         res.json(result);
@@ -532,6 +538,9 @@ app.post(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const document = req.body;
         const result = await db.insertOne(collection, document);
         res.status(201).json(result);
@@ -544,6 +553,9 @@ app.post(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const documents = req.body;
         const results = await db.insertMany(collection, documents);
         res.status(201).json(results);
@@ -556,6 +568,9 @@ app.put(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const updates = req.body;
         const success = await db.updateById(collection, id, updates);
         if (!success) return res.status(404).json({ error: 'Document not found or not updated' });
@@ -570,6 +585,9 @@ app.delete(
     authorizeRoles('admin'),
     asyncHandler(async (req: Request, res: Response) => {
         const { collection, id } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const success = await db.deleteById(collection, id);
         if (!success) return res.status(404).json({ error: 'Document not found' });
         res.json({ success: true, id });
@@ -582,6 +600,9 @@ app.post(
     authenticateToken,
     asyncHandler(async (req: Request, res: Response) => {
         const { collection } = req.params;
+        if (collection.startsWith('.')) {
+            return res.status(400).json({ error: 'Invalid collection name' });
+        }
         const { filter, document } = req.body;
         const result = await db.upsert(collection, filter, document);
         res.json(result);
