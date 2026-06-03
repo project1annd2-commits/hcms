@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Date Migration Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .log-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .log-container.active {
+            display: block;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .log-info { color: #4ec9b0; }
+        .log-success { color: #4ec9b0; font-weight: bold; }
+        .log-warning { color: #ce9178; }
+        .log-error { color: #f48771; font-weight: bold; }
+        .log-emphasis { color: #dcdcaa; font-weight: bold; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-idle { background: #e9ecef; color: #495057; }
+        .status-running { background: #ffc107; color: #000; }
+        .status-success { background: #28a745; color: white; }
+        .status-error { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗓️ Attendance Date Migration Tool</h1>
+        <p class="subtitle">Migrate attendance records from December 2nd to December 1st, 2025</p>
+
+        <div class="info-box">
+            <h3>📋 What this tool does:</h3>
+            <ul>
+                <li>Searches for all attendance records dated December 2nd, 2025</li>
+                <li>Updates them to December 1st, 2025</li>
+                <li>Handles multiple date formats automatically</li>
+                <li>Verifies the migration was successful</li>
+            </ul>
+        </div>
+
+        <div id="status">
+            <span class="status-badge status-idle">⏸️ Ready</span>
+        </div>
+
+        <button id="migrateBtn" class="button" onclick="startMigration()">
+            🚀 Start Migration
+        </button>
+
+        <div id="logContainer" class="log-container"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, query, where, getDocs, writeBatch, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5_mkf3qPYIy9vOmHm1bivOD3P3ycWmRM",
+            authDomain: "hcms-680e6.firebaseapp.com",
+            projectId: "hcms-680e6",
+            storageBucket: "hcms-680e6.firebasestorage.app",
+            messagingSenderId: "1033007205802",
+            appId: "1:1033007205802:web:7ac660d2b8ad3dd363afd3",
+            measurementId: "G-XMPRDVPW4V"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const logContainer = document.getElementById('logContainer');
+        const statusBadge = document.getElementById('status');
+        const migrateBtn = document.getElementById('migrateBtn');
+
+        function updateStatus(status, text) {
+            statusBadge.innerHTML = `<span class="status-badge status-${status}">${text}</span>`;
+        }
+
+        function log(message, type = 'info') {
+            logContainer.classList.add('active');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = message;
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        window.startMigration = async function() {
+            try {
+                migrateBtn.disabled = true;
+                updateStatus('running', '⏳ Running...');
+                logContainer.innerHTML = '';
+                log('🔄 Starting attendance date migration...', 'emphasis');
+                log('');
+
+                const attendanceRef = collection(db, 'training_attendance');
+                
+                const dateFormats = [
+                    '2025-12-02',
+                    '2025-12-2',
+                    '12/02/2025',
+                    '12/2/2025',
+                    '2-12-2025',
+                    '02-12-2025'
+                ];
+
+                let totalUpdated = 0;
+                const newDate = '2025-12-01';
+
+                log('📋 Searching for attendance records on December 2nd, 2025...', 'info');
+                log('');
+
+                for (const dateFormat of dateFormats) {
+                    log(`🔍 Checking format: ${dateFormat}`, 'info');
+                    
+                    const q = query(attendanceRef, where('attendance_date', '==', dateFormat));
+                    const snapshot = await getDocs(q);
+
+                    if (snapshot.empty) {
+                        log(`   ℹ️ No records found with this format`, 'info');
+                        log('');
+                        continue;
+                    }
+
+                    log(`   ✅ Found ${snapshot.size} records with this format`, 'success');
+                    
+                    let batch = writeBatch(db);
+                    let batchCount = 0;
+                    let batchNumber = 1;
+
+                    for (const docSnap of snapshot.docs) {
+                        const data = docSnap.data();
+                        log(`   📝 Updating record: ${docSnap.id}`, 'info');
+                        log(`      Teacher ID: ${data.teacher_id}`, 'info');
+                        log(`      Status: ${data.status}`, 'info');
+                        log(`      Old Date: ${data.attendance_date} → New Date: ${newDate}`, 'warning');
+                        
+                        const docRef = doc(db, 'training_attendance', docSnap.id);
+                        batch.update(docRef, { 
+                            attendance_date: newDate,
+                            updated_at: new Date().toISOString()
+                        });
+                        
+                        batchCount++;
+                        totalUpdated++;
+
+                        if (batchCount === 500) {
+                            log('');
+                            log(`   💾 Committing batch ${batchNumber} (500 records)...`, 'emphasis');
+                            await batch.commit();
+                            log(`   ✅ Batch ${batchNumber} committed successfully`, 'success');
+                            log('');
+                            batch = writeBatch(db);
+                            batchNumber++;
+                            batchCount = 0;
+                        }
+                    }
+
+                    if (batchCount > 0) {
+                        log('');
+                        log(`   💾 Committing final batch ${batchNumber} (${batchCount} records)...`, 'emphasis');
+                        await batch.commit();
+                        log(`   ✅ Final batch committed successfully`, 'success');
+                        log('');
+                    }
+                }
+
+                log('');
+                log('============================================================', 'emphasis');
+                log('✨ MIGRATION COMPLETE ✨', 'success');
+                log('============================================================', 'emphasis');
+                log(`📊 Total records updated: ${totalUpdated}`, 'success');
+                log(`📅 All attendance from December 2nd → December 1st, 2025`, 'success');
+                log('============================================================', 'emphasis');
+                log('');
+
+                // Verify
+                log('🔍 Verification: Checking for remaining December 2nd records...', 'info');
+                log('');
+                
+                let remainingRecords = 0;
+                for (const dateFormat of dateFormats) {
+                    const q = query(attendanceRef, where('attendance_date', '==', dateFormat));
+                    const verifySnapshot = await getDocs(q);
+                    
+                    if (!verifySnapshot.empty) {
+                        log(`⚠️ Warning: Still found ${verifySnapshot.size} records with format ${dateFormat}`, 'warning');
+                        remainingRecords += verifySnapshot.size;
+                    }
+                }
+
+                if (remainingRecords === 0) {
+                    log('✅ Verification passed: No December 2nd records remaining', 'success');
+                } else {
+                    log(`⚠️ Warning: ${remainingRecords} records still have December 2nd dates`, 'warning');
+                }
+                log('');
+
+                // Show December 1st count
+                const dec1Query = query(attendanceRef, where('attendance_date', '==', newDate));
+                const dec1Snapshot = await getDocs(dec1Query);
+                
+                log(`📊 Total attendance records on December 1st, 2025: ${dec1Snapshot.size}`, 'success');
+                log('');
+
+                updateStatus('success', '✅ Complete');
+                migrateBtn.textContent = '✓ Migration Complete';
+
+            } catch (error) {
+                log('');
+                log(`❌ Error during migration: ${error.message}`, 'error');
+                console.error('Error:', error);
+                updateStatus('error', '❌ Error');
+                migrateBtn.disabled = false;
+            }
+        };
+    </script>
+</body>
+</html>

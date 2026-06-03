@@ -1,0 +1,12 @@
+﻿--- SEARCHING FOR SCHOOL ID IN KNOWN COLLECTIONS ---
+Collection schools: 604 records. Has school_id: false
+Collection users: 19 records. Has school_id: false
+Collection teachers: 829 records. Has school_id: true
+Collection mentors: 149 records. Has school_id: true
+Collection students: 3081 records. Has school_id: true
+Collection student_assessments: 4723 records. Has school_id: true
+Potential Match in student_assessments: {"id":"00beGXsNLV3MLKziNWdL","school_id":"43f65ea6-0a01-4df8-9bc6-3b9cec89286c","theme_number":7,"skills":{"s7_h3_s1":"trying","s7_h3_l5_ar":"help","s7_h3_p1":"can","s7_h3_l4":"trying","s7_h3_l7":"hel
+Collection school_assignments: 235 records. Has school_id: true
+Collection school_followups: 1803 records. Has school_id: true
+Collection implementation_checklists: 4 records. Has school_id: true
+Potential Match in implementation_checklists: {"id":"FIlMrbUyAeR8C65EqI4O","created_at":"2026-03-09T16:01:43.698Z","school_id":"00641500-8b31-43ef-b1fd-3f08446191bd","updated_at":"2026-03-09T16:01:46.129Z","items":{"mentor_assigned":true,"books_d

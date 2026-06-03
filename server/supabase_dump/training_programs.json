@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1ffcc0bd-b280-4e58-abc8-1d837ca3247d",
+    "title": "C.10 Hauna 2025-2026",
+    "description": "",
+    "duration_hours": 2,
+    "category": "",
+    "status": "active",
+    "created_at": "2025-11-16T17:04:13.058361+00:00",
+    "updated_at": "2025-11-16T18:12:30.546+00:00",
+    "start_date": "2025-11-18",
+    "end_date": "2025-12-10",
+    "meeting_link": "https://us06web.zoom.us/j/92320326762?pwd=E5MgrvTbENwBdaqBEq66JrofVSbt3e.1"
+  }
+]

@@ -1,0 +1,39 @@
+Checking employee_tasks collection...
+
+Today's date: 2025-12-06
+
+Total tasks in database: 455
+Tasks for today (2025-12-06): 6
+
+Tasks grouped by employee for today:
+
+Employee ID: 63f96f15-dbbe-4cd3-b9f4-19ccc6160938
+  Tasks count: 6
+    - mentor's weekly meeting (pending, 30min)
+    - mentor's weekly meeting (pending, 30min)
+    - mentor's weekly meeting (pending, 30min)
+    - Online mentors training (pending, 30min)
+    - mentor's weekly meeting (pending, 30min)
+    - mentor's weekly meeting (pending, 30min)
+
+
+All unique dates in employee_tasks:
+  2025-12-06
+  2025-12-05
+  2025-12-04
+  2025-12-03
+  2025-12-02
+  2025-12-01
+  2025-11-30
+  2025-11-29
+  2025-11-28
+  2025-11-27
+
+
+Active employees: 6
+  - Zainab (ID: 0041eada-7462-4622-bba8-3b9780db6bad)
+  - Safa Warsi (ID: 021ab274-bf5c-47e5-ad40-8b2008619e0b)
+  - Asma Ayesha (ID: 59b89595-578b-4c54-8e0a-99c9ffaee42e)
+  - Rahila (ID: 63f96f15-dbbe-4cd3-b9f4-19ccc6160938)
+  - Parveen Taj (ID: bd6089c7-8364-46cb-a934-c80db95fb718)
+  - Ruksana (ID: cd15910b-74a6-49f9-9008-eb8506b476ed)

@@ -1,0 +1,13 @@
+﻿Searching for data related to 33 Huda schools...
+Collection implementation_checklists: Found 0 matches for Huda IDs
+Collection school_onboarding: Found 0 matches for Huda IDs
+Collection onboarding: Found 0 matches for Huda IDs
+Collection checklists: Found 0 matches for Huda IDs
+Collection school_checklists: Found 0 matches for Huda IDs
+Collection implementation: Found 0 matches for Huda IDs
+Collection implementation_checklists: Found 0 records containing "Huda" string
+Collection school_onboarding: Found 0 records containing "Huda" string
+Collection onboarding: Found 0 records containing "Huda" string
+Collection checklists: Found 0 records containing "Huda" string
+Collection school_checklists: Found 0 records containing "Huda" string
+Collection implementation: Found 0 records containing "Huda" string

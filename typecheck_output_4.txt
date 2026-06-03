@@ -1,0 +1,80 @@
+﻿
+> vite-react-typescript-starter@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.app.json
+
+src/components/AcademicsAnalytics.tsx(6,5): error TS6133: 'LineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(7,5): error TS6133: 'Download' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(11,5): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(23,5): error TS6133: 'Legend' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(25,18): error TS6133: 'RechartsLineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(26,5): error TS6133: 'Line' is declared but its value is never read.
+src/components/ActivityLogs.tsx(3,26): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AdminPersonnelManagement.tsx(189,55): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/components/AdminSuggestions.tsx(3,40): error TS6133: 'Clock' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,28): error TS6133: 'UserCheck' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,39): error TS6133: 'UserX' is declared but its value is never read.
+src/components/AuditManagement.tsx(3,1): error TS6133: 'Collections' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,26): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,36): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AuditManagement.tsx(11,41): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/BulkUpload.tsx(4,36): error TS6133: 'Teacher' is declared but its value is never read.
+src/components/BulkUpload.tsx(21,51): error TS6133: 'currentPermissions' is declared but its value is never read.
+src/components/BulkUpload.tsx(92,13): error TS6133: 'headers' is declared but its value is never read.
+src/components/CoraCMS.tsx(58,126): error TS2322: Type '"published" | "draft"' is not assignable to type '"draft"'.
+  Type '"published"' is not assignable to type '"draft"'.
+src/components/ImplementationAnalytics.tsx(12,51): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/Login.tsx(6,16): error TS6133: 'LogIn' is declared but its value is never read.
+src/components/Login.tsx(6,30): error TS6133: 'GraduationCap' is declared but its value is never read.
+src/components/Login.tsx(6,62): error TS6133: 'Award' is declared but its value is never read.
+src/components/ManagementManagement.tsx(11,46): error TS6198: All destructured elements are unused.
+src/components/ManagementManagement.tsx(59,48): error TS2322: Type '"active" | "inactive"' is not assignable to type '"active"'.
+  Type '"inactive"' is not assignable to type '"active"'.
+src/components/ManagementPortal.tsx(3,46): error TS6133: 'Users' is declared but its value is never read.
+src/components/ParentPortal.tsx(2,21): error TS6133: 'Search' is declared but its value is never read.
+src/components/PasscodeSettings.tsx(15,12): error TS6133: 'currentPasscode' is declared but its value is never read.
+src/components/PermissionsManagement.tsx(5,16): error TS6133: 'Save' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(5,61): error TS6133: 'Check' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(5,73): error TS6133: 'XIcon' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(25,57): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(25,70): error TS6133: 'initialTab' is declared but its value is never read.
+src/components/StudentAnalytics.tsx(5,21): error TS6133: 'Users' is declared but its value is never read.
+src/components/StudentListing.tsx(11,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/StudentManager.tsx(5,52): error TS6133: 'Filter' is declared but its value is never read.
+src/components/StudentManager.tsx(5,66): error TS6133: 'AlertCircle' is declared but its value is never read.
+src/components/StudentManager.tsx(107,13): error TS2322: Type '"active" | "dropped" | "inactive" | undefined' is not assignable to type '"active" | "dropped" | "inactive"'.
+  Type 'undefined' is not assignable to type '"active" | "dropped" | "inactive"'.
+src/components/SystemUpgrades.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
+src/components/SystemUpgrades.tsx(18,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/TeacherPortal.tsx(88,9): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(106,7): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(232,9): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(252,24): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(252,34): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(253,23): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(253,33): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(254,22): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(254,32): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(255,22): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(255,32): error TS2322: Type 'string' is not assignable to type 'number'.
+src/components/TeacherPortal.tsx(262,23): error TS2353: Object literal may only specify known properties, and 'self' does not exist in type 'string[]'.
+src/components/TeacherPortal.tsx(1619,13): error TS2322: Type '{ schoolId: string; teacherId: string | undefined; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'teacherId' does not exist on type 'IntrinsicAttributes & Props'.
+src/components/TemplateDesigner/TemplateDesigner.tsx(2,35): error TS6133: 'useEffect' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,31): error TS6133: 'ImageIcon' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,50): error TS6133: 'Move' is declared but its value is never read.
+src/components/TrainingAssignmentManagement.tsx(7,103): error TS6133: 'EyeOff' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(2,59): error TS6133: 'AssignmentWithDetails' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,38): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,48): error TS6133: 'Clock' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,72): error TS6133: 'LinkIcon' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,82): error TS6133: 'BarChart2' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(7,1): error TS6133: 'Notification' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(42,24): error TS6133: 'setFilterStatus' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(68,21): error TS6133: 'setTemplates' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,10): error TS6133: 'designerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,24): error TS6133: 'setDesignerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(72,10): error TS6133: 'notification' is declared but its value is never read.
+src/lib/accessControl.ts(66,44): error TS6133: 'permissions' is declared but its value is never read.
+src/lib/services/db.ts(24,19): error TS6133: 'T' is declared but its value is never read.
+src/lib/services/db.ts(25,25): error TS6133: 'T' is declared but its value is never read.

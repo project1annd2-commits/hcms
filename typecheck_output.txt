@@ -1,0 +1,128 @@
+﻿
+> vite-react-typescript-starter@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.app.json
+
+src/App.tsx(211,24): error TS2367: This comparison appears to be unintentional because the types '"teacher_employee" | "employee_employee" | undefined' and '"technical_support"' have no overlap.
+src/App.tsx(228,44): error TS2367: This comparison appears to be unintentional because the types '"teacher_employee" | "employee_employee" | undefined' and '"technical_support"' have no overlap.
+src/App.tsx(574,9): error TS2322: Type '{ onLogin: (user: User, permissions: Permission) => void; onTeacherLogin: (teacher: Teacher) => void; onMentorLogin: (mentor: Mentor) => void; onManagementLogin: (management: Management) => void; onParentAccess: () => void; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'onManagementLogin' does not exist on type 'IntrinsicAttributes & Props'.
+src/App.tsx(637,11): error TS2322: Type '{ currentUser: User; currentPermissions: Permission; initialTab: any; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'initialTab' does not exist on type 'IntrinsicAttributes & Props'.
+src/components/AcademicsAnalytics.tsx(6,5): error TS6133: 'LineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(7,5): error TS6133: 'Download' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(11,5): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(23,5): error TS6133: 'Legend' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(25,18): error TS6133: 'RechartsLineChart' is declared but its value is never read.
+src/components/AcademicsAnalytics.tsx(26,5): error TS6133: 'Line' is declared but its value is never read.
+src/components/ActivityLogs.tsx(3,26): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AdminPersonnelManagement.tsx(37,60): error TS2339: Property 'ADMIN_PERSONNEL' does not exist on type '{ readonly USERS: "users"; readonly PERMISSIONS: "permissions"; readonly SCHOOLS: "schools"; readonly TEACHERS: "teachers"; readonly MENTORS: "mentors"; readonly TRAINING_PROGRAMS: "training_programs"; ... 14 more ...; readonly STUDENT_ASSESSMENTS: "student_assessments"; }'.
+src/components/AdminPersonnelManagement.tsx(51,55): error TS2339: Property 'ADMIN_PERSONNEL' does not exist on type '{ readonly USERS: "users"; readonly PERMISSIONS: "permissions"; readonly SCHOOLS: "schools"; readonly TEACHERS: "teachers"; readonly MENTORS: "mentors"; readonly TRAINING_PROGRAMS: "training_programs"; ... 14 more ...; readonly STUDENT_ASSESSMENTS: "student_assessments"; }'.
+src/components/AdminPersonnelManagement.tsx(53,54): error TS2339: Property 'ADMIN_PERSONNEL' does not exist on type '{ readonly USERS: "users"; readonly PERMISSIONS: "permissions"; readonly SCHOOLS: "schools"; readonly TEACHERS: "teachers"; readonly MENTORS: "mentors"; readonly TRAINING_PROGRAMS: "training_programs"; ... 14 more ...; readonly STUDENT_ASSESSMENTS: "student_assessments"; }'.
+src/components/AdminPersonnelManagement.tsx(70,41): error TS2339: Property 'ADMIN_PERSONNEL' does not exist on type '{ readonly USERS: "users"; readonly PERMISSIONS: "permissions"; readonly SCHOOLS: "schools"; readonly TEACHERS: "teachers"; readonly MENTORS: "mentors"; readonly TRAINING_PROGRAMS: "training_programs"; ... 14 more ...; readonly STUDENT_ASSESSMENTS: "student_assessments"; }'.
+src/components/AdminPersonnelManagement.tsx(189,55): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/components/AdminSuggestions.tsx(3,40): error TS6133: 'Clock' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,28): error TS6133: 'UserCheck' is declared but its value is never read.
+src/components/AttendanceAnalytics.tsx(5,39): error TS6133: 'UserX' is declared but its value is never read.
+src/components/AuditManagement.tsx(3,1): error TS6133: 'Collections' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,26): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/AuditManagement.tsx(5,36): error TS6133: 'Filter' is declared but its value is never read.
+src/components/AuditManagement.tsx(11,41): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/BulkUpload.tsx(4,36): error TS6133: 'Teacher' is declared but its value is never read.
+src/components/BulkUpload.tsx(21,51): error TS6133: 'currentPermissions' is declared but its value is never read.
+src/components/BulkUpload.tsx(92,13): error TS6133: 'headers' is declared but its value is never read.
+src/components/CoraCMS.tsx(58,126): error TS2322: Type '"published" | "draft"' is not assignable to type '"draft"'.
+  Type '"published"' is not assignable to type '"draft"'.
+src/components/ImplementationAnalytics.tsx(12,51): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/Login.tsx(6,16): error TS6133: 'LogIn' is declared but its value is never read.
+src/components/Login.tsx(6,30): error TS6133: 'GraduationCap' is declared but its value is never read.
+src/components/Login.tsx(6,62): error TS6133: 'Award' is declared but its value is never read.
+src/components/ManagementManagement.tsx(11,46): error TS6198: All destructured elements are unused.
+src/components/ManagementManagement.tsx(59,48): error TS2322: Type '"active" | "inactive"' is not assignable to type '"active"'.
+  Type '"inactive"' is not assignable to type '"active"'.
+src/components/ManagementPortal.tsx(3,46): error TS6133: 'Users' is declared but its value is never read.
+src/components/ParentPortal.tsx(2,21): error TS6133: 'Search' is declared but its value is never read.
+src/components/PasscodeSettings.tsx(15,12): error TS6133: 'currentPasscode' is declared but its value is never read.
+src/components/PermissionsManagement.tsx(5,16): error TS6133: 'Save' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(5,61): error TS6133: 'Check' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(5,73): error TS6133: 'XIcon' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(25,57): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/SchoolImplementationChecklist.tsx(25,70): error TS6133: 'initialTab' is declared but its value is never read.
+src/components/SchoolManagement.tsx(221,9): error TS2353: Object literal may only specify known properties, and 'source' does not exist in type 'Partial<School>'.
+src/components/SchoolManagement.tsx(356,22): error TS2339: Property 'source' does not exist on type 'School'.
+src/components/SchoolManagement.tsx(358,28): error TS2339: Property 'dropout_year' does not exist on type 'School'.
+src/components/SchoolManagement.tsx(359,26): error TS2339: Property 'lead_owner' does not exist on type 'School'.
+src/components/SchoolManagement.tsx(1320,94): error TS2339: Property 'lead_owner' does not exist on type 'SchoolWithCounts'.
+src/components/SchoolManagement.tsx(1324,94): error TS2339: Property 'source' does not exist on type 'SchoolWithCounts'.
+src/components/SchoolManagement.tsx(1333,108): error TS2339: Property 'dropout_year' does not exist on type 'SchoolWithCounts'.
+src/components/StudentAnalytics.tsx(5,21): error TS6133: 'Users' is declared but its value is never read.
+src/components/StudentAssessmentForm.tsx(698,81): error TS2339: Property 'mentor_id' does not exist on type 'Student'.
+src/components/StudentAssessmentForm.tsx(713,78): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentAssessmentForm.tsx(767,107): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentAssessmentForm.tsx(780,27): error TS2741: Property 'teacher_id' is missing in type '{ [x: string]: string | number | Record<string, "can" | "trying" | "help">; student_id: string; school_id: string; theme_number: number; theme_name: string; skills: Record<string, "can" | ... 1 more ... | "help">; created_at: string; updated_at: string; }' but required in type 'Omit<StudentAssessment, "id">'.
+src/components/StudentAssessmentForm.tsx(809,19): error TS2741: Property 'teacher_id' is missing in type '{ school_id: string; created_at: string; updated_at: string; name: string; phone: string; grade: "H1" | "H2" | "H3"; }' but required in type 'Omit<Student, "id">'.
+src/components/StudentAssessmentForm.tsx(962,201): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentAssessmentForm.tsx(963,73): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentAssessmentForm.tsx(999,172): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentListing.tsx(11,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/StudentManager.tsx(5,52): error TS6133: 'Filter' is declared but its value is never read.
+src/components/StudentManager.tsx(5,66): error TS6133: 'AlertCircle' is declared but its value is never read.
+src/components/StudentManager.tsx(102,34): error TS2339: Property 'roll_number' does not exist on type 'Student'.
+src/components/StudentManager.tsx(104,34): error TS2339: Property 'parent_name' does not exist on type 'Student'.
+src/components/StudentManager.tsx(105,35): error TS2339: Property 'parent_phone' does not exist on type 'Student'.
+src/components/StudentManager.tsx(107,29): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentManager.tsx(114,16): error TS2339: Property 'roll_number' does not exist on type 'Student'.
+src/components/StudentManager.tsx(114,33): error TS2339: Property 'roll_number' does not exist on type 'Student'.
+src/components/StudentManager.tsx(196,113): error TS2339: Property 'roll_number' does not exist on type 'Student'.
+src/components/StudentManager.tsx(211,91): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentManager.tsx(211,142): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentManager.tsx(211,211): error TS2339: Property 'status' does not exist on type 'Student'.
+src/components/StudentManager.tsx(216,123): error TS2339: Property 'parent_name' does not exist on type 'Student'.
+src/components/StudentProfileView.tsx(92,74): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/StudentProfileView.tsx(92,96): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/SystemUpgrades.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
+src/components/SystemUpgrades.tsx(18,40): error TS6133: 'currentUser' is declared but its value is never read.
+src/components/TeacherPortal.tsx(2,129): error TS2305: Module '"../lib/models"' has no exported member 'TeacherProfileDetails'.
+src/components/TeacherPortal.tsx(67,18): error TS2339: Property 'profile_details' does not exist on type 'Teacher'.
+src/components/TeacherPortal.tsx(67,72): error TS2339: Property 'profile_details' does not exist on type 'Teacher'.
+src/components/TeacherPortal.tsx(88,9): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(106,7): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(232,9): error TS2353: Object literal may only specify known properties, and 'school_id' does not exist in type '{ user_id: string; user_name: string; user_role: string; action: string; view?: string | undefined; details?: string | undefined; }'.
+src/components/TeacherPortal.tsx(243,17): error TS2339: Property 'profile_details' does not exist on type 'Teacher'.
+src/components/TeacherPortal.tsx(244,34): error TS2339: Property 'profile_details' does not exist on type 'Teacher'.
+src/components/TeacherPortal.tsx(504,51): error TS2551: Property 'getOrCreateSupportSession' does not exist on type '{ getOrCreateSession(teacherId: string, employeeId: string, schoolId: string): Promise<ChatSession>; sendMessage(sessionId: string, senderId: string, senderType: "employee" | "teacher", content: string): Promise<...>; markAsRead(sessionId: string, readerType: "employee" | "teacher"): Promise<...>; getMessages(sessio...'. Did you mean 'getOrCreateSession'?
+src/components/TeacherPortal.tsx(866,81): error TS2339: Property 'plain_passcode' does not exist on type 'Teacher'.
+src/components/TeacherPortal.tsx(1619,13): error TS2322: Type '{ schoolId: string; teacherId: string | undefined; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & Props'.
+  Property 'teacherId' does not exist on type 'IntrinsicAttributes & Props'.
+src/components/TeacherStudentListing.tsx(57,12): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/TeacherStudentListing.tsx(57,25): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/TeacherStudentListing.tsx(105,54): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/TeacherStudentListing.tsx(107,66): error TS2339: Property 'section' does not exist on type 'Student'.
+src/components/TemplateDesigner/TemplateDesigner.tsx(2,35): error TS6133: 'useEffect' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,31): error TS6133: 'ImageIcon' is declared but its value is never read.
+src/components/TemplateDesigner/TemplateDesigner.tsx(4,50): error TS6133: 'Move' is declared but its value is never read.
+src/components/TrainingAssignmentManagement.tsx(7,103): error TS6133: 'EyeOff' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(2,59): error TS6133: 'AssignmentWithDetails' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,38): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,48): error TS6133: 'Clock' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,72): error TS6133: 'LinkIcon' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(5,82): error TS6133: 'BarChart2' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(7,1): error TS6133: 'Notification' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(42,24): error TS6133: 'setFilterStatus' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(68,21): error TS6133: 'setTemplates' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,10): error TS6133: 'designerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(70,24): error TS6133: 'setDesignerMode' is declared but its value is never read.
+src/components/TrainingProgramManagement.tsx(72,10): error TS6133: 'notification' is declared but its value is never read.
+src/components/UserManagement.tsx(63,16): error TS2345: Argument of type '{ permissions: Permission | null; _id?: string | undefined; id?: string | undefined; username: string; password_hash: string; full_name: string; role: "admin" | "employee" | "viewer"; is_active: boolean; created_at: string; updated_at: string; }[]' is not assignable to parameter of type 'SetStateAction<UserWithPermissions[]>'.
+  Type '{ permissions: Permission | null; _id?: string | undefined; id?: string | undefined; username: string; password_hash: string; full_name: string; role: "admin" | "employee" | "viewer"; is_active: boolean; created_at: string; updated_at: string; }[]' is not assignable to type 'UserWithPermissions[]'.
+    Type '{ permissions: Permission | null; _id?: string; id?: string; username: string; password_hash: string; full_name: string; role: "admin" | "employee" | "viewer"; is_active: boolean; created_at: string; updated_at: string; }' is not assignable to type 'UserWithPermissions'.
+      Type '{ permissions: Permission | null; _id?: string; id?: string; username: string; password_hash: string; full_name: string; role: "admin" | "employee" | "viewer"; is_active: boolean; created_at: string; updated_at: string; }' is not assignable to type '{ permissions?: Permission | undefined; }'.
+        Types of property 'permissions' are incompatible.
+          Type 'Permission | null' is not assignable to type 'Permission | undefined'.
+            Type 'null' is not assignable to type 'Permission | undefined'.
+src/components/UserManagement.tsx(146,16): error TS2551: Property 'updateOne' does not exist on type 'DatabaseService'. Did you mean 'update'?
+src/components/UserManagement.tsx(297,57): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/accessControl.ts(66,44): error TS6133: 'permissions' is declared but its value is never read.
+src/lib/services/db.ts(24,19): error TS6133: 'T' is declared but its value is never read.
+src/lib/services/db.ts(25,25): error TS6133: 'T' is declared but its value is never read.

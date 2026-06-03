@@ -1,0 +1,75 @@
+﻿--- TOTAL SCHOOLS: 604 ---
+--- HUDA SCHOOLS FOUND ---
+ID: 0NwVX2CBRdst5HX89ejz, Name: Al Huda, Code: KA058
+ID: 19ef495b-d7c7-48a8-89a6-8344e5746781, Name: Al Huda, Code: UP0411
+ID: 1bac992a-5bb6-4f3a-b47c-18a18e8f054e, Name: Huda National school(BRW), Code: KA012E
+ID: 2a724bb5-8ee5-42ca-898c-0bc9ade806e6, Name: Huda Islamic, Code: GJ008
+ID: 2cbfca18-708c-4163-863a-77a41b8fb12f, Name: Huda National school(RHN), Code: KA012D
+ID: 394bce53-5c47-448c-9121-14eaae96d5c0, Name: Al Huda, Code: RH015
+ID: 3a067d21-6c95-4731-8018-4ae7e3d28d9c, Name: Hilal School- (Huda Mysore undertaking), Code: RH053
+ID: 3ccac478-81d4-48b0-ae68-0ee87fc6c714, Name: Al Huda- Kudachi, Code: RH042
+ID: 407cee82-621e-4943-b912-4954b1710b0d, Name: Ghaisul Huda School, Code: KA070
+ID: 41656d94-12b5-4e2b-9955-e1ef56bb0927, Name: Huda Pre school,Prescidency, Code: KA015A
+ID: 4b5468e1-735e-42aa-bdba-363eaeb1375d, Name: Huda National school(KG Halli), Code: KA012H
+ID: 4d2eb99a-473f-4aaa-bf7f-811011acd775, Name: Huda Chamrajnagar, Code: KA069
+ID: 50e62b98-95c5-429b-bd46-cb91b427545a, Name: Huda National School(DJ Halli), Code: KA012A
+ID: 537b5505-31ea-4740-9401-352c3284b738, Name: Huda Kollegal, Code: RH025
+ID: 730eb783-0e94-4684-8dc6-aa0fba1fa827, Name: Huda National school(UN), Code: KA012C
+ID: 7GCzWzpC7CxIIK8hq5wt, Name: Al - Huda uni kids, Code: KA043
+ID: 8093da30-b832-4ac3-935a-92055f49027e, Name: Al - Huda uni kids, Code: 00
+ID: 8qmGFLGfiz9SqOnWI6La, Name: Nurul Huda Academy, Code: 005/2026-27
+ID: 9c385099-6cff-4872-a1e8-6d6409168a33, Name: Huda National School(BRY), Code: KA012G
+ID: EBNTvH7kbz6QvG7om5CB, Name:  LEAD English Medium School (Al Huda Urdu Medium School) , Code: SCH-2532
+ID: JPZg5HVK5O7AGJrpe4zp, Name: Al Huda, Code: GJ008
+ID: ZxVVqKde4fa8yd1i6yfQ, Name: New School Allocation & Handover Details  Allocation Number: 005/2026ΓÇô27 New School Name: Nurul Huda Academy Management Name: Murselim Khan Contact Number: 89724 72794 Allocated SPOC: Ms. Ayesha Affiliated for the Academic Year: 2026ΓÇô27 Affiliation Date: 5 January 2026  Official Handover Date: 5 January 2026, Code: 000000
+ID: a1e6f0e0-5c68-4339-8f42-e01809bd5043, Name: Huda Pre school Nodal, Code: KA015B
+ID: b02b3efd-6964-4712-b99c-591de12f73c6, Name: Al Huda - Omar Nagar, Code: RH038
+ID: b4924f46-fdc2-4933-80bf-5678b9914644, Name: Huda Public school, Code: 0D002
+ID: c426c7e5-d153-48db-b7d7-18165dcb8cff, Name: Huda National School(KBS), Code: KA012B
+ID: d3999a36-05fc-43eb-9f7f-fa67f28784ff, Name: Al-Huda English School, Code: UP041
+ID: d5246db3-3657-41e6-b5ff-f0fb3c60a5b1, Name: Huda National school(GP), Code: KA012F
+ID: e165db77-ed9e-4e20-b989-ec5926da6b87, Name: Al Huda Uni Kids, Code: RH011
+ID: e57e3cef-02ce-4290-a2c4-bbddc82fdf82, Name: Huda Pre school (Omarnagar), Code: KA015D
+ID: faed0332-c9cd-4a6d-99a1-59044579ccc1, Name: Al Huda, Code: KA033
+ID: fba55d4a-df3d-4338-91d8-2168d2b0bf8c, Name: Huda Pre School, Code: RH005
+ID: y7OANfylwej6aRfNkPjV, Name: Nurul Huda Academy, Code: 0000
+--- TOTAL CHECKLISTS: 4 ---
+--- SAMPLE CHECKLIST SCHOOL IDS ---
+School ID: 00641500-8b31-43ef-b1fd-3f08446191bd
+School ID: 00641500-8b31-43ef-b1fd-3f08446191bd
+School ID: e52d2826-2a84-4f23-8fad-5159778f20ee
+School ID: b6ab8eb9-23a9-4db9-8bdd-65de55240a04
+--- HUDA MATCHES ---
+NO DATA for Al Huda (0NwVX2CBRdst5HX89ejz)
+NO DATA for Al Huda (19ef495b-d7c7-48a8-89a6-8344e5746781)
+NO DATA for Huda National school(BRW) (1bac992a-5bb6-4f3a-b47c-18a18e8f054e)
+NO DATA for Huda Islamic (2a724bb5-8ee5-42ca-898c-0bc9ade806e6)
+NO DATA for Huda National school(RHN) (2cbfca18-708c-4163-863a-77a41b8fb12f)
+NO DATA for Al Huda (394bce53-5c47-448c-9121-14eaae96d5c0)
+NO DATA for Hilal School- (Huda Mysore undertaking) (3a067d21-6c95-4731-8018-4ae7e3d28d9c)
+NO DATA for Al Huda- Kudachi (3ccac478-81d4-48b0-ae68-0ee87fc6c714)
+NO DATA for Ghaisul Huda School (407cee82-621e-4943-b912-4954b1710b0d)
+NO DATA for Huda Pre school,Prescidency (41656d94-12b5-4e2b-9955-e1ef56bb0927)
+NO DATA for Huda National school(KG Halli) (4b5468e1-735e-42aa-bdba-363eaeb1375d)
+NO DATA for Huda Chamrajnagar (4d2eb99a-473f-4aaa-bf7f-811011acd775)
+NO DATA for Huda National School(DJ Halli) (50e62b98-95c5-429b-bd46-cb91b427545a)
+NO DATA for Huda Kollegal (537b5505-31ea-4740-9401-352c3284b738)
+NO DATA for Huda National school(UN) (730eb783-0e94-4684-8dc6-aa0fba1fa827)
+NO DATA for Al - Huda uni kids (7GCzWzpC7CxIIK8hq5wt)
+NO DATA for Al - Huda uni kids (8093da30-b832-4ac3-935a-92055f49027e)
+NO DATA for Nurul Huda Academy (8qmGFLGfiz9SqOnWI6La)
+NO DATA for Huda National School(BRY) (9c385099-6cff-4872-a1e8-6d6409168a33)
+NO DATA for  LEAD English Medium School (Al Huda Urdu Medium School)  (EBNTvH7kbz6QvG7om5CB)
+NO DATA for Al Huda (JPZg5HVK5O7AGJrpe4zp)
+NO DATA for New School Allocation & Handover Details  Allocation Number: 005/2026ΓÇô27 New School Name: Nurul Huda Academy Management Name: Murselim Khan Contact Number: 89724 72794 Allocated SPOC: Ms. Ayesha Affiliated for the Academic Year: 2026ΓÇô27 Affiliation Date: 5 January 2026  Official Handover Date: 5 January 2026 (ZxVVqKde4fa8yd1i6yfQ)
+NO DATA for Huda Pre school Nodal (a1e6f0e0-5c68-4339-8f42-e01809bd5043)
+NO DATA for Al Huda - Omar Nagar (b02b3efd-6964-4712-b99c-591de12f73c6)
+NO DATA for Huda Public school (b4924f46-fdc2-4933-80bf-5678b9914644)
+NO DATA for Huda National School(KBS) (c426c7e5-d153-48db-b7d7-18165dcb8cff)
+NO DATA for Al-Huda English School (d3999a36-05fc-43eb-9f7f-fa67f28784ff)
+NO DATA for Huda National school(GP) (d5246db3-3657-41e6-b5ff-f0fb3c60a5b1)
+NO DATA for Al Huda Uni Kids (e165db77-ed9e-4e20-b989-ec5926da6b87)
+NO DATA for Huda Pre school (Omarnagar) (e57e3cef-02ce-4290-a2c4-bbddc82fdf82)
+NO DATA for Al Huda (faed0332-c9cd-4a6d-99a1-59044579ccc1)
+NO DATA for Huda Pre School (fba55d4a-df3d-4338-91d8-2168d2b0bf8c)
+NO DATA for Nurul Huda Academy (y7OANfylwej6aRfNkPjV)
